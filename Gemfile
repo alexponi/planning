@@ -4,7 +4,7 @@ gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'event-calendar', :require => 'event_calendar', :git => 'git://github.com/excid3/event_calendar.git'
 
 
 group :development, :test do
