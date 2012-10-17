@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :period %><br />
+    <%= f.select :period, [[" "],["day"],["week"],["month"],["year"]] %>
+  </div>
+  <div class="field">
     <%= f.label :start_at %><br />
     <%= f.text_field :start_at %>
   </div>
@@ -24,24 +28,18 @@
     <%= f.text_field :end_at %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :period_id %><br />
-    <%= f.number_field :period_id %>
+    <%= f.hidden_field :period_id %>
   </div>
   <div class="field">
     <%= f.label :end_period %><br />
     <%= f.text_field :end_period %>
   </div>
   <div class="field">
-    <%= f.label :period %><br />
-    <%= f.text_field :period %>
-  </div>
-  <div class="field">
     <%= f.label :color %><br />
-    <%= f.text_field :color %>
+    <%= f.select :color, [["Red","#ff9999"], ["Orange","#ff9933"], ["Yellow","#ffcc00"], ["Green","#99ff33"], ["Blue","#33ffff"], ["Indigo","#3399ff"], ["Violet","#cc99ff"]]%>
   </div>
   <div class="actions">
     <%= f.submit %>
