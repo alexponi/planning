@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  start_at: 2012-10-17 12:36:20
+  end_at: 2012-10-17 12:36:20
+  user_id: 1
+  period_id: 1
+  end_period: 2012-10-17 12:36:20
+  period: MyString
+  color: MyString
+
+two:
+  name: MyString
+  start_at: 2012-10-17 12:36:20
+  end_at: 2012-10-17 12:36:20
+  user_id: 1
+  period_id: 1
+  end_period: 2012-10-17 12:36:20
+  period: MyString
+  color: MyString
