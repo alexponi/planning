@@ -1,0 +1,3 @@
+# planning
+
+This is a planning tool for a group of people.
