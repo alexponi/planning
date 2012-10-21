@@ -1,12 +1,14 @@
 Planning::Application.routes.draw do
-  get "pages/index"
-
-  resources :events
   devise_for :users
+  resources :events
+  root to: "pages#index"
   
-  root to: 'pages#index'
+  
+  get "pages/index"
+  
+
+
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-  match '/calendar/show/(/:year(/:month))' => 'calendar#show', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

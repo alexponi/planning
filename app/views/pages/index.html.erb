@@ -1,10 +1,20 @@
-<h1>Planning</h1>
-  
-<%= stylesheet_link_tag "event_calendar" %>
-<%= raw(event_calendar) %>
 
-  <p>
-  	This is a planning tool for a group of people.
+  <% if user_signed_in? %>
+    <% if current_user.username != nil %>
+      <h1><%= current_user.username %> events</h1>  
+    <% else %>
+      <h1>My events</h1>
+    <% end %>
+    <p><a href='calendar#index'>All events</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href='events/new'> Create event</a></p>
+    <p> 
+    <%= stylesheet_link_tag "event_calendar" %>
+    <%= raw(event_calendar) %>
+    </p>
+  <% else %>
+    <h1>Planning</h1>
+    <p>This is a planning tool for a group of people. 
     The source code is available on 
     <a href="http://github.com/alexponi/planning.git">GitHub</a>
-  </p>
+    </p>
+  <% end %>

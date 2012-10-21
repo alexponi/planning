@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <b>Period:</b>
+  <%= @event.period %>
+</p>
+
+<p>
   <b>Start at:</b>
   <%= @event.start_at %>
 </p>
@@ -16,12 +21,12 @@
 </p>
 
 <p>
-  <b>User:</b>
+  <b>User id:</b>
   <%= @event.user_id %>
 </p>
 
 <p>
-  <b>Period:</b>
+  <b>Period id:</b>
   <%= @event.period_id %>
 </p>
 
@@ -31,15 +36,60 @@
 </p>
 
 <p>
-  <b>Period:</b>
-  <%= @event.period %>
-</p>
-
-<p>
   <b>Color:</b>
   <%= @event.color %>
 </p>
 
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if user_signed_in? %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :period %><br />
+    <%= f.select :period, [[" "],["day"],["week"],["month"],["year"]] %>
+  </div>
+  <div class="field">
+    <%= f.label :start_at %><br />
+    <%= f.text_field :start_at %>
+  </div>
+  <div class="field">
+    <%= f.label :end_at %><br />
+    <%= f.text_field :end_at %>
+  </div>
+  <div class="field">
+    
+    <%= f.hidden_field :user_id, value: current_user.id %>
+      
+  </div>
+  <div class="field">
+    <%= f.hidden_field :period_id %>
+  </div>
+  <div class="field">
+    <%= f.label :end_period %><br />
+    <%= f.text_field :end_period %>
+  </div>
+  <div class="field">
+    <%= f.label :color %><br />
+    <%= f.select :color, [["Red","#ff9999"], ["Orange","#ff9933"], ["Yellow","#ffcc00"], ["Green","#99ff33"], ["Blue","#33ffff"], ["Indigo","#3399ff"], ["Violet","#cc99ff"]]%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>
+<% end %>
+
+<%= link_to 'Listing events', events_path %> |
+<%= link_to 'My events', root_path %>

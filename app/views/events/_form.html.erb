@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  <% if user_signed_in? %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -27,8 +27,8 @@
     <%= f.label :end_at %><br />
     <%= f.text_field :end_at %>
   </div>
-  <div class="field">
-    <%= f.hidden_field :user_id %>
+  <div class="field">    
+    <%= f.hidden_field :user_id, value: current_user.id %>      
   </div>
   <div class="field">
     <%= f.hidden_field :period_id %>
@@ -44,4 +44,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  <% end %>
 <% end %>

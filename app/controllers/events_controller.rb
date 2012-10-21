@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :correct_user,   only: [:edit,:update,:destroy]
+
   # GET /events
   # GET /events.json
   def index
@@ -81,3 +84,19 @@ class EventsController < ApplicationController
     end
   end
 end
+
+private
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
+    def correct_user
+      if user_signed_in?
+        @event = current_user.events.find_by_id(params[:id])
+        redirect_to root_url if @event.nil?
+      end
+    end
