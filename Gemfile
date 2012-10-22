@@ -44,4 +44,6 @@ gem 'devise'
 
 group :production do
   gem 'pg', '0.12.2'
+  gem 'jquery-ui-rails'
+
 end
